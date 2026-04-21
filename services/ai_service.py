@@ -7,13 +7,13 @@ def summarise(file_path = "email_fetch.json"):
         with open(file_path, 'r', encoding='utf-8') as f:
             emails = json.load(f)
     except FileNotFoundError:
-        return "Error: email.json not found. Run fetch_email.py first."
+        return "Error: email_fetch.json not found. Run fetch_email.py first."
     email_context = ""
     for i, mail in enumerate(emails, 1):
         email_context += f"\n--- Email {i} ---\n"
-        email_context += f"From: {mail['from']}\n"
-        email_context += f"Subject: {mail['subject']}\n"
-        email_context += f"Content: {mail['content'][:500]}\n"
+        email_context += f"From: {mail.get('from')}\n"
+        email_context += f"Subject: {mail.get('subject')}\n"
+        email_context += f"Content: {mail.get('content')[:500]}\n"
 
     system_prompt = (
         "You are InboxMate, a helpful local AI assistant. "
