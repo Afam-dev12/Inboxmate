@@ -1,3 +1,5 @@
+print("Afam update test")
+
 import os
 from datetime import datetime
 import json
